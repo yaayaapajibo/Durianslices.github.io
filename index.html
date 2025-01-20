@@ -3,88 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word Puzzle Game</title>
+    <title>Cute Word Puzzle Game</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             background-color: #ffe4e1;
             background-image: url('https://www.sewingpartsonline.com/cdn/shop/files/shades-of-pink-heart-fabric-322465.jpg?v=1719521440&width=1000');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             color: #4d004d;
         }
-        h1 {
+        .game-container {
             text-align: center;
-            color: #d63384;
+            background-color: rgba(255, 240, 245, 0.9);
+            border: 3px solid #ff69b4;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 90%;
         }
-        .playlist, .game-area {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            border: 2px solid #ff69b4;
-            border-radius: 12px;
-            background-color: rgba(255, 240, 245, 0.9); /* Transparent white for readability */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        .playlist h2, .game-area h2 {
+        h1 {
+            font-size: 2em;
             color: #d63384;
+            margin-bottom: 20px;
+        }
+        .playlist {
+            margin: 20px 0;
         }
         ul {
             list-style-type: none;
             padding: 0;
         }
         ul li {
-            padding: 8px 0;
-            border-bottom: 1px solid #f8d7da;
+            margin: 5px 0;
+            font-size: 1.1em;
         }
-        ul li:last-child {
-            border-bottom: none;
-        }
-        input[type="text"], button {
+        input[type="text"] {
             width: calc(100% - 20px);
             padding: 10px;
             margin: 10px 0;
-            border: 1px solid #ff69b4;
-            border-radius: 4px;
+            border: 2px solid #ff69b4;
+            border-radius: 8px;
+            font-size: 1em;
         }
         button {
-            background-color: #d63384;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            background-color: #ff69b4;
             color: white;
+            font-size: 1em;
             cursor: pointer;
+            margin-top: 10px;
         }
         button:hover {
-            background-color: #b31969;
+            background-color: #d63384;
         }
         .result {
-            text-align: center;
-            margin-top: 20px;
+            margin-top: 15px;
             font-size: 1.2em;
         }
     </style>
 </head>
 <body>
 
-<h1>Word Puzzle Game 💕</h1>
-
-<div class="playlist">
-    <h2>Playlist</h2>
-    <ul>
-        <li>1. Music to My Ears</li>
-        <li>2. Life Goes On</li>
-        <li>3. Love Story</li>
-        <li>4. And I Am Telling You</li>
-        <li>5. Isn't She Lovely</li>
-    </ul>
-    <p><strong>Hint:</strong> Extract words from each song title and rearrange them to form the hidden sentence.</p>
-</div>
-
-<div class="game-area">
-    <h2>Your Guess</h2>
+<div class="game-container">
+    <h1>💕 Word Puzzle Game 💕</h1>
+    <div class="playlist">
+        <p><strong>Playlist Clues:</strong></p>
+        <ul>
+            <li>1. Music to My Ears</li>
+            <li>2. Life Goes On</li>
+            <li>3. Love Story</li>
+            <li>4. And I Am Telling You</li>
+            <li>5. Isn't She Lovely</li>
+        </ul>
+        <p><em>Hint: Extract words from each song to form the hidden sentence!</em></p>
+    </div>
     <form id="guessForm">
-        <input type="text" id="guessInput" placeholder="Enter the sentence here" required>
+        <input type="text" id="guessInput" placeholder="Type your guess here" required>
         <button type="submit">Submit</button>
     </form>
     <div class="result" id="result"></div>
@@ -96,7 +102,7 @@
     const resultDiv = document.getElementById('result');
 
     guessForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent form from reloading the page
+        event.preventDefault(); // Prevent page reload
         const userGuess = document.getElementById('guessInput').value.trim();
         if (userGuess.toLowerCase() === correctSentence.toLowerCase()) {
             resultDiv.innerHTML = '<span style="color: green;">Correct! 🎉 You solved the puzzle!</span>';
@@ -108,3 +114,4 @@
 
 </body>
 </html>
+
