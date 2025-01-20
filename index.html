@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Puzzle Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #ffe4e1;
+            background-image: url('https://i.imgur.com/2R2YFrv.png'); /* Heart background */
+            background-size: 150px; /* Size of each heart */
+            background-repeat: repeat;
+            color: #4d004d;
+        }
+        h1 {
+            text-align: center;
+            color: #d63384;
+        }
+        .playlist, .game-area {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 2px solid #ff69b4;
+            border-radius: 12px;
+            background-color: #fff0f5;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .playlist h2, .game-area h2 {
+            color: #d63384;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f8d7da;
+        }
+        ul li:last-child {
+            border-bottom: none;
+        }
+        input[type="text"], button {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ff69b4;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #d63384;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #b31969;
+        }
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Word Puzzle Game 💕</h1>
+
+<div class="playlist">
+    <h2>Playlist</h2>
+    <ul>
+        <li>1. Music to My Ears</li>
+        <li>2. Life Goes On</li>
+        <li>3. Love Story</li>
+        <li>4. And I Am Telling You</li>
+        <li>5. Isn't She Lovely</li>
+    </ul>
+    <p><strong>Hint:</strong> Extract words from each song title and rearrange them to form the hidden sentence.</p>
+</div>
+
+<div class="game-area">
+    <h2>Your Guess</h2>
+    <form id="guessForm">
+        <input type="text" id="guessInput" placeholder="Enter the sentence here" required>
+        <button type="submit">Submit</button>
+    </form>
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    const correctSentence = "Music is life and love";
+    const guessForm = document.getElementById('guessForm');
+    const resultDiv = document.getElementById('result');
+
+    guessForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form from reloading the page
+        const userGuess = document.getElementById('guessInput').value.trim();
+        if (userGuess.toLowerCase() === correctSentence.toLowerCase()) {
+            resultDiv.innerHTML = '<span style="color: green;">Correct! 🎉 You solved the puzzle!</span>';
+        } else {
+            resultDiv.innerHTML = '<span style="color: red;">Incorrect. Try again! 💡</span>';
+        }
+    });
+</script>
+
+</body>
+</html>
